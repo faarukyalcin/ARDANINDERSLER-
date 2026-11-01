@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   const supabase = createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
     cookies: {
       getAll: () => jar.getAll(),
-      setAll: (items) => items.forEach(({ name, value, options }) => jar.set(name, value, options))
+      setAll: (items: any) => items.forEach(({ name, value, options }: any) => jar.set(name, value, options))
     }
   });
   const { error } = await supabase.auth.exchangeCodeForSession(code);
